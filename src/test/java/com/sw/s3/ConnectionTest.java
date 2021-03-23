@@ -13,7 +13,11 @@ public class ConnectionTest extends MyAbstractTest { //Annotation 같이 상속�
  
 	@Autowired
 	private DataSource dataSource;
+	
 	//Main Branch Test
+	
+	//Member Test
+	
 	@Autowired
 	private SqlSession sqlSession;
 	
