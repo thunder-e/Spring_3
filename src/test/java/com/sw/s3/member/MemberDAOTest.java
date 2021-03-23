@@ -46,7 +46,7 @@ public class MemberDAOTest extends MyAbstractTest {
 		memberDTO.setPhone("01012224555");
 		
 		int result = memberDAO.memberUpdate(memberDTO);
-	
+		assertEquals(1, result);
 		
 	}
 	
