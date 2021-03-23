@@ -15,7 +15,7 @@
 	</insert>
 	
 	<update id="memberUpdate" parameterType="com.sw.s3.member.MemberDTO">
-		update member set pw=#{id}, name=#{name}, phone=#{phone}, email=#{email} where id=#{id}
+		update member set pw=#{pw}, name=#{name}, phone=#{phone}, email=#{email} where id=#{id}
 	</update>
 
 	<delete id="memberDelete" parameterType="com.sw.s3.member.MemberDTO">

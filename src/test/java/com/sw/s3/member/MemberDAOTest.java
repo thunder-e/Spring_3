@@ -12,7 +12,7 @@ public class MemberDAOTest extends MyAbstractTest {
 	@Autowired
 	private MemberDAO memberDAO;
 	
-	@Test
+	//@Test
 	public void memberDelete() throws Exception {
 		MemberDTO memberDTO = new MemberDTO();
 		memberDTO.setId("id2");
@@ -36,10 +36,14 @@ public class MemberDAOTest extends MyAbstractTest {
 	
 	
 	
-	//@Test
+	@Test
 	public void memberUpdate() throws Exception {
 		MemberDTO memberDTO = new MemberDTO();
 		memberDTO.setId("iu");
+		memberDTO.setPw("iu");
+		memberDTO.setName("jieun");
+		memberDTO.setEmail("iu@gmail.com");
+		memberDTO.setPhone("01012224555");
 		
 		int result = memberDAO.memberUpdate(memberDTO);
 	
