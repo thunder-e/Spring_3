@@ -4,9 +4,27 @@
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">  <!-- 스키마 있어야 -->
 
 <mapper namespace="com.sw.s3.bankbook.BankBookDAO">
+	
+	<update id="setUpdate" parameterType="com.sw.s3.bankbook.BankBookDTO">
+		update bankbook set bookName=#{bookName}, bookRate=#{bookRate}, bookSale=#{bookSale} where bookNumber=#{bookNumber}
+	</update>
+
+
 	<insert id="setWrite" parameterType="com.sw.s3.bankbook.BankBookDTO">
 		insert into bankbook values(bank_seq.nextval, #{bookName}, #{bookRate},#{bookSale})
 	</insert>
+
+	<select id="getSelect" parameterType="com.sw.s3.bankbook.BankBookDTO" resultType="com.sw.s3.bankbook.BankBookDTO">
+		select * from bankbook where bookNumber=#{bookNumber}
+	</select>
+
+	<select id="getList" resultType="com.sw.s3.bankbook.BankBookDTO">
+		select * from bankbook order by bookNumber desc
+	</select>
+
+	<delete id="setDelete" parameterType="com.sw.s3.bankbook.BankBookDTO">
+		delete bankbook where booknumber=#{bookNumber}
+	</delete>
 
 
 </mapper>
