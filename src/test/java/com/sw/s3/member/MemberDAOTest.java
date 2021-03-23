@@ -5,12 +5,39 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
-public class MemberDAOTest {
+import com.sw.s3.MyAbstractTest;
+
+public class MemberDAOTest extends MyAbstractTest {
 	
 	@Autowired
 	private MemberDAO memberDAO;
-
+	
+	
 	@Test
+	public void MemberLogin() throws Exception {
+		MemberDTO memberDTO = new MemberDTO();
+		memberDTO.setId("iu");
+		memberDTO.setPw("pw1");
+		memberDAO.memberLogin(memberDTO);
+		assertNotNull(memberDTO);
+	}
+	
+	
+	
+	
+	
+	//@Test
+	public void memberUpdate() throws Exception {
+		MemberDTO memberDTO = new MemberDTO();
+		memberDTO.setId("iu");
+		
+		int result = memberDAO.memberUpdate(memberDTO);
+	
+		
+	}
+	
+
+	//@Test
 	public void memberJoin() throws Exception {
 		MemberDTO memberDTO = new MemberDTO();
 		memberDTO.setId("id2");

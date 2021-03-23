@@ -25,9 +25,9 @@ public class MemberDAO {
 	
 	
 	
-	public int memberDelete(MemberDTO memberDTO) throws Exception{
+	//public int memberDelete(MemberDTO memberDTO) throws Exception{
 			
-	}
+	//}
 	
 	
 	//memberJoin 데이터를 받아서 DB에 insert 하는 메서드
@@ -40,20 +40,8 @@ public class MemberDAO {
 	//login - id pw를 받아서 조회
 	public MemberDTO memberLogin(MemberDTO memberDTO)throws Exception{
 
-	
-		//4. SQL문 생성
-		String sql ="SELECT * FROM member WHERE id=? and pw=?";
+		return sqlSession.selectOne(NAMESPACE + ".memberLogin", memberDTO);
 
-		
-		if(rs.next()) {
-			memberDTO.setName(rs.getString("name"));
-			memberDTO.setEmail(rs.getString("email"));
-			memberDTO.setPhone(rs.getString("phone"));
-		}else {
-			memberDTO = null;
-		}
-
-		return memberDTO;
 	}
 
 }
