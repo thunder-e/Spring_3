@@ -12,16 +12,26 @@ public class MemberDAOTest extends MyAbstractTest {
 	@Autowired
 	private MemberDAO memberDAO;
 	
-	
 	@Test
-	public void MemberLogin() throws Exception {
+	public void memberDelete() throws Exception {
+		MemberDTO memberDTO = new MemberDTO();
+		memberDTO.setId("id2");
+		int result = memberDAO.memberDelete(memberDTO);
+		assertEquals(1, result);
+		
+	}
+	
+	
+	
+	
+	//@Test
+	public void memberLogin() throws Exception {
 		MemberDTO memberDTO = new MemberDTO();
 		memberDTO.setId("iu");
 		memberDTO.setPw("pw1");
 		memberDAO.memberLogin(memberDTO);
 		assertNotNull(memberDTO);
 	}
-	
 	
 	
 	
