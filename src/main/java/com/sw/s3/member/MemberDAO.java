@@ -6,11 +6,13 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
 import org.apache.ibatis.session.SqlSession;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 @Repository
 public class MemberDAO {
 	
+	@Autowired
 	private SqlSession sqlSession;
 	private final String NAMESPACE = "com.sw.s3.member.MemberDAO";
 	
