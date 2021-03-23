@@ -19,6 +19,8 @@ public class MemberDAO {
 
 	public int memberUpdate(MemberDTO memberDTO) throws Exception {
 			//id를 제외하고 나머지 수정
+		return sqlSession.update(NAMESPACE + ".memberUpdate", memberDTO);
+		
 	}
 	
 	
@@ -42,16 +44,7 @@ public class MemberDAO {
 		//4. SQL문 생성
 		String sql ="SELECT * FROM member WHERE id=? and pw=?";
 
-		//5. 미리 보내기
-		PreparedStatement st = con.prepareStatement(sql);
-
-		//6. ? 세팅
-		st.setString(1, memberDTO.getId());
-		st.setString(2, memberDTO.getPw());
-
-		//7. 최종 전송 후 처리
-		ResultSet rs = st.executeQuery();
-
+		
 		if(rs.next()) {
 			memberDTO.setName(rs.getString("name"));
 			memberDTO.setEmail(rs.getString("email"));
@@ -59,11 +52,6 @@ public class MemberDAO {
 		}else {
 			memberDTO = null;
 		}
-
-		//8. 해제
-		rs.close();
-		st.close();
-		con.close();
 
 		return memberDTO;
 	}
