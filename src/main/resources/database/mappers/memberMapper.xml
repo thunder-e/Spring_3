@@ -6,19 +6,19 @@
 
 <mapper namespace="com.sw.s3.member.MemberDAO">
 
-	<select id="memberLogin" parameterType="com.sw.s3.member.MemberDTO" resultType="com.sw.s3.member.MemberDTO">
+	<select id="memberLogin" parameterType="MemberDTO" resultType="MemberDTO">
 		select * from member where id=#{id} and pw=#{pw}
 	</select>
 	
-	<insert id="memberJoin" parameterType="com.sw.s3.member.MemberDTO">
+	<insert id="memberJoin" parameterType="MemberDTO">
 		insert into member values (#{id}, #{pw}, #{name}, #{phone}, #{email})
 	</insert>
 	
-	<update id="memberUpdate" parameterType="com.sw.s3.member.MemberDTO">
+	<update id="memberUpdate" parameterType="MemberDTO">
 		update member set pw=#{pw}, name=#{name}, phone=#{phone}, email=#{email} where id=#{id}
 	</update>
 
-	<delete id="memberDelete" parameterType="com.sw.s3.member.MemberDTO">
+	<delete id="memberDelete" parameterType="MemberDTO">
 		delete member where id=#{id}
 	</delete>
 
