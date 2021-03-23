@@ -4,10 +4,9 @@
   "http://mybatis.org/dtd/mybatis-3-config.dtd">
   
 <configuration>
-	<!-- 별칭주기 -->
-	<typeAliases> 	
+	<typeAliases>
 		<typeAlias type="com.sw.s3.member.MemberDTO" alias="MemberDTO"/>
 		<typeAlias type="com.sw.s3.bankbook.BankBookDTO" alias="BankBookDTO"/>
 	</typeAliases>
 
-</configuration>
+</configuration>  
