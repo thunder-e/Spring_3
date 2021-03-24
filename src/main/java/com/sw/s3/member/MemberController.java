@@ -15,31 +15,28 @@ public class MemberController {
 	private MemberService memberService;
 	
 	
-	@RequestMapping("memberLogin")
-	public void memberLogin(MemberDTO memberDTO, Model model) throws Exception{
-		model.addAttribute("dto", memberDTO);
+	@RequestMapping("memberLogin")		// 입력폼으로 가는
+	public void memberLogin() throws Exception{
 		
 	}
 	
-	@RequestMapping(value="memberLogin", method=RequestMethod.POST)
-	public ModelAndView memberLogin(MemberDTO memberDTO) throws Exception {
-		ModelAndView mv = new ModelAndView();
-		memberDTO = memberService.memberLogin(memberDTO);
-		mv.addObject("dto", memberDTO);
-		mv.setViewName("redirect:../");
-		return mv;
+	@RequestMapping(value="memberLogin", method=RequestMethod.POST) 	// DB
+	public String memberLogin(MemberDTO memberDTO) throws Exception {
+	
+		memberDTO = memberService.memberLogin(memberDTO);	 // 받아온 dto를 service로 보내
+		return "redirect:../";
+
 	}
 	
 	
 	@RequestMapping("memberJoin")
-	public void memberJoin(MemberDTO memberDTO, Model model) throws Exception{
-		model.addAttribute("dto", memberDTO);
+	public void memberJoin() throws Exception{
+
 	}
 	
 	@RequestMapping(value="memberJoin", method = RequestMethod.POST)
 	public String memberJoin(MemberDTO memberDTO) throws Exception {
-		ModelAndView mv = new ModelAndView();
-		memberService.memberJoin(memberDTO);
+		int result = memberService.memberJoin(memberDTO);
 		return "redirect:../";
 		
 	}

@@ -7,14 +7,11 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h1>Member Login Page</h1>
-	
-	<form action="./memberLogin" method="post">
-		ID : <input type="text" name="id"><br>
-		PW : <input type="password" name="pw"><br>
-		<button>Login</button>
-	</form>
-	
-	
+
+<h1>Member Page Test</h1>
+<h3>ID : ${dto.id}</h3>
+<h3>Email : ${dto.email}</h3>
+
+
 </body>
 </html>
