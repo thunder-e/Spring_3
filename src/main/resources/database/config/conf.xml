@@ -8,5 +8,4 @@
 		<typeAlias type="com.sw.s3.member.MemberDTO" alias="MemberDTO"/>
 		<typeAlias type="com.sw.s3.bankbook.BankBookDTO" alias="BankBookDTO"/>
 	</typeAliases>
-
 </configuration>  
