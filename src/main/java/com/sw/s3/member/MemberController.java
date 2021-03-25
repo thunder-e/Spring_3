@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 @RequestMapping("/member/**")
@@ -13,6 +14,42 @@ public class MemberController {
 	
 	@Autowired
 	private MemberService memberService;
+	
+	@RequestMapping("memberUpdate")
+	public void memberUpdate() throws Exception {
+	}
+
+	@RequestMapping(value = "memberUpdate", method = RequestMethod.POST)
+	public String memberUpdate(MemberDTO memberDTO, HttpSession session) throws Exception {
+		int result = memberService.memberUpdate(memberDTO);
+		
+		if(result>0) {
+			session.setAttribute("member", memberDTO);
+		}
+		return "redirect:../";
+	}
+	
+	
+	
+	@RequestMapping("memberDelete")
+	public String memberDelete(HttpSession session) throws Exception {
+		MemberDTO memberDTO = (MemberDTO)session.getAttribute("member"); //object니까 형변환 필요
+		int result = memberService.memberDelete(memberDTO); //DB에서 삭제 session에서는 DTO가지고 있어
+		
+		session.invalidate(); // session에서도 로그아웃 시켜줘야 안뜸
+		
+		return "redirect:../";
+	}
+	
+	@RequestMapping("memberLogout")
+	public String memberLogout(HttpSession session) throws Exception {
+		session.invalidate();
+		return "redirect:../";
+	}
+	
+	@RequestMapping("memberPage")
+	public void memberPage() throws Exception {
+	}
 	
 	
 	@RequestMapping("memberLogin")		// 입력폼으로 가는
