@@ -14,7 +14,7 @@
 	</select>
 	
 	<insert id="setInsert" parameterType="NoticeDTO">
-		insert into notice values (notice_seq.nextval, #{title}, #{contents}, #{writer}, 0, sysdate) 
+		insert into notice values (notice_seq.nextval, #{title}, #{writer}, #{contents}, 0, sysdate) 
 	</insert>
 	
 	<update id="setUpdate" parameterType="NoticeDTO">
