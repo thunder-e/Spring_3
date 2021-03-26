@@ -6,12 +6,18 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<c:import url="../template/bootStrap.jsp"></c:import>
 </head>
 <body>
+
+<c:import url="../template/header.jsp"></c:import>
+
 	<h1>BankBook Select</h1>
 	
 	<h3>Name : ${dto.bookName}</h3>
 	<h3>Number : ${dto.bookNumber}</h3>
+	
+	<a href="../account/accountInsert?bookNumber=${dto.bookNumber}">계좌개설</a>
 	
 	<c:catch>
 	<c:if test="${member.id eq 'admin'}">

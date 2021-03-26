@@ -7,5 +7,6 @@
 	<typeAliases>
 		<typeAlias type="com.sw.s3.member.MemberDTO" alias="MemberDTO"/>
 		<typeAlias type="com.sw.s3.bankbook.BankBookDTO" alias="BankBookDTO"/>
+		<typeAlias type="com.sw.s3.account.AccountDTO" alias="AccountDTO"/>
 	</typeAliases>
 </configuration>  
