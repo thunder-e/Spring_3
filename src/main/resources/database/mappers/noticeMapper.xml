@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.sw.s3.notice.NoticeDAO">
+
+	<select id="getList" resultType="NoticeDTO">
+		select num, title, writer, regdate, hit from notice
+	</select>
+	
+	<select id="getSelect" parameterType="NoticeDTO" resultType="NoticeDTO">
+		select * from notice where num = #{num}
+	</select>
+	
+	<insert id="setInsert" parameterType="NoticeDTO">
+		insert into notice values (notice_seq.nextval, #{title}, #{contents}, #{writer}, 0, sysdate) 
+	</insert>
+	
+	<update id="setUpdate" parameterType="NoticeDTO">
+		update notice set title=#{title}, contents=#{contents}, writer=#{writer}, regdate=#{regdate}, hit=#{hit} where num=#{num}
+	</update>	
+	
+	<delete id="setDelete" parameterType="NoticeDTO">
+		delete notice where num=#{num}
+	</delete>
+	
+	<update id="setHitUpdate" parameterType="NoticeDTO">
+		update notice set hit=(select hit from notice where num=#{num})+1 where num=#{num}
+	</update>
+	
+	
+	
+	
+</mapper>
