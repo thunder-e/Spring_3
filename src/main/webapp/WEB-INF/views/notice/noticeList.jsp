@@ -39,9 +39,14 @@
 </table>
 </div>
 
+
+<c:catch>
+<c:if test="${member.id eq 'admin'}">
 <div class="container">
 <a href="./noticeInsert" class="btn btn-primary" role="button">Write</a>
 </div>
+</c:if>
+</c:catch>
 
 </body>
 </html>

@@ -28,7 +28,7 @@
 			
 			<div class="form-group">
 				<label for="contents">Contents</label> 
-				<input type="text" class="form-control" id="contents" name="contents" value="${update.contents}"> 
+				<input type="text" class="form-control" id="contents" name="contents" value="${dto.contents}"> 
 			</div>
 			
 			<input type="hidden" name="hit" value="${dto.hit}">

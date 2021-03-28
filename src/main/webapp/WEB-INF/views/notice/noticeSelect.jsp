@@ -36,11 +36,14 @@
 	
 </div>
 
+<c:catch>
+<c:if test="${member.id eq 'admin'}">
 <div class="container">
 <a href="./noticeUpdate" class="btn btn-primary" role="button">Update</a>
 <a href="./noticeDelete" class="btn btn-primary" role="button">Delete</a>
 </div>
-
+</c:if>
+</c:catch>
 
 
 </body>
