@@ -12,6 +12,7 @@
 
 <c:import url="../template/header.jsp"></c:import>
 
+<div class="container">
 	<h1>BankBook Select</h1>
 	
 	<h3>Name : ${dto.bookName}</h3>
@@ -34,5 +35,6 @@
 	</c:if> 
 --%>
 	
+	</div>
 </body>
 </html>

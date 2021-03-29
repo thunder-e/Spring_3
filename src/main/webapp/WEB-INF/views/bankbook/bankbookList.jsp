@@ -40,6 +40,21 @@
 		
 		
 	</table>
+
+	
+	
+	<div class="container">             
+  <ul class="pagination">
+    <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+    
+    <c:forEach begin="${pager.startNum}" end="${pager.lastNum}" var="i">
+    <li class="page-item"><a class="page-link" href="./bankbookList?curPage=${i}">${i}</a></li>
+	</c:forEach>
+	
+    <li class="page-item"><a class="page-link" href="#">Next</a></li>
+  </ul>
+</div>
+
 </div>
 	
 	

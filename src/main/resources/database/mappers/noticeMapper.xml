@@ -5,6 +5,12 @@
 
 <mapper namespace="com.sw.s3.notice.NoticeDAO">
 
+		
+	<select id="getTotalCount" resultType="Long">
+		select count(num) from notice
+	</select>
+	
+
 	<select id="getList" resultType="NoticeDTO" parameterType="Pager">
 		select * from
 			(select rownum R, N.* from
@@ -31,8 +37,6 @@
 	<update id="setHitUpdate" parameterType="NoticeDTO">
 		update notice set hit=(select hit from notice where num=#{num})+1 where num=#{num}
 	</update>
-	
-	
-	
+
 	
 </mapper>

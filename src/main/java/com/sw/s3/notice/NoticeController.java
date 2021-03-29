@@ -27,9 +27,7 @@ public class NoticeController {
 	public ModelAndView getList(Pager pager) throws Exception { 		//b. 파라미터가 오지 않을 경우  @RequestParam(defaultValue="기본값") 데이터타입 변수명 @RequestParam(defaultValue = "1") long curPage
 		ModelAndView mv = new ModelAndView();
 		System.out.println(pager.getCurPage());
-		System.out.println("Service 호출전 : " + pager.getTotalPage());
 		List<NoticeDTO> ar = noticeService.getList(pager);
-		System.out.println("Service 호출후 : " + pager.getTotalPage());
 //		List<NoticeDTO> ar = noticeService.getList(curPage);
 		mv.addObject("list", ar);
 		mv.setViewName("notice/noticeList");

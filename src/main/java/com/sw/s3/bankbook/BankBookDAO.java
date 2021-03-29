@@ -11,12 +11,19 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.sw.s3.util.Pager;
+
 @Repository
 public class BankBookDAO {
 	
 	@Autowired
 	private SqlSession sqlSession; //root-context.xml에 있는
 	private final String NAMESPACE="com.sw.s3.bankbook.BankBookDAO"; //Mapper의 namespace이름과 동일하게
+	
+	
+	public long getTotalCount() throws Exception {
+		return sqlSession.selectOne(NAMESPACE+".getTotalCount");
+	}
 	
 	
 	public int setUpdate(BankBookDTO bankBookDTO) throws Exception {
@@ -43,8 +50,8 @@ public class BankBookDAO {
 
 	//getList
 	//bankbook table의 모든 데이터 조회 후 리턴
-	public List<BankBookDTO> getList() throws Exception {
-		return sqlSession.selectList(NAMESPACE+".getList");
+	public List<BankBookDTO> getList(Pager pager) throws Exception {
+		return sqlSession.selectList(NAMESPACE+".getList", pager);
 	}
 	
 	

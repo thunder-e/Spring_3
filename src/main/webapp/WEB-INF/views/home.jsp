@@ -107,6 +107,8 @@
 		
 		글 리스트
 		/notice/noticeList		GET 	noticeList.jsp
+		파라미터
+		curPage : 페이지번호
 		
 		글 상세보기
 		/notice/noticeSelect	GET		noticeSelect.jsp

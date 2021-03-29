@@ -5,6 +5,11 @@
 
 <mapper namespace="com.sw.s3.bankbook.BankBookDAO">
 	
+	<select	id="getTotalCount" resultType="long">
+		select count(bookNumber) from bankbook
+	</select>
+	
+	
 	<update id="setUpdate" parameterType="com.sw.s3.bankbook.BankBookDTO">
 		update bankbook set bookName=#{bookName}, bookRate=#{bookRate}, bookSale=#{bookSale} where bookNumber=#{bookNumber}
 	</update>
@@ -19,7 +24,10 @@
 	</select>
 
 	<select id="getList" resultType="com.sw.s3.bankbook.BankBookDTO">
-		select * from bankbook order by bookNumber desc
+		select * from
+			(select rownum R, N.* from
+				(select * from bankbook where bookNumber>0 order by bookNumber desc) N)
+		where R between ${startRow} and ${lastRow}
 	</select>
 
 	<delete id="setDelete" parameterType="com.sw.s3.bankbook.BankBookDTO">

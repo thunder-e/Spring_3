@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.sw.s3.util.Pager;
+
 @Controller
 @RequestMapping("/bankbook/**")
 public class BankBookController {
@@ -34,8 +36,8 @@ public class BankBookController {
 	
 	
 	@RequestMapping("bankbookList")
-	public void getList(Model Model) throws Exception {  	// void  :  요청한 URI가 View의 경로명으로 됨
-		List<BankBookDTO> ar =  bankBookService.getList();
+	public void getList(Model Model, Pager pager) throws Exception {  	// void  :  요청한 URI가 View의 경로명으로 됨
+		List<BankBookDTO> ar =  bankBookService.getList(pager);
 		Model.addAttribute("list", ar);
 	}
 	

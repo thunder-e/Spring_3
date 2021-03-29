@@ -26,15 +26,42 @@ public class NoticeService {
 		// ---------------------------
 		
 		// ---------------------------
-		long totalCount=120;
-		long totalPage= totalCount/perPage;
+		//1. totalCount
+		long totalCount=noticeDAO.getTotalCount();
+		
+		//2. totalPage
+		long totalPage= totalCount / perPage;
 		if(totalCount%perPage!=0) {
 			totalPage++;
 		}
-		pager.setTotalPage(totalPage);
+		
+		//3. totalBlock
+		long totalBlock = totalPage / perBlock;
+		if(totalPage%5 != 0) {
+			totalBlock++;
+		}
+		
+		//4. curBlock
+		long curBlock = pager.getCurPage() / perBlock;
+		if(pager.getCurPage()%perBlock != 0) {
+			curBlock++;
+		}
+		
+		//5. startNum, lastNum
+		long startNum = (curBlock-1)*perBlock+1;
+		long lastNum = curBlock*perBlock;
+		
+		
+		
 		// jsp로 보낼 데이터는 Controller에서 Model이나 MV로 보내줌
-		// Controller에 보내야 하는데 이미 리턴은 있으니까 Pager에 멤버변수로 
+		// Controller에 보내야 하는데 이미 리턴은 있으니까 Pager에 멤버변수로  totalPage
+	
+		pager.setStartNum(startNum);
+		pager.setLastNum(lastNum);
 		System.out.println("TotalPage : " + totalPage);
+		System.out.println("TotalBlock : " + totalBlock);
+		System.out.println("CurBlock : " + curBlock);
+		
 				
 		return noticeDAO.getList(pager);
 	}
