@@ -1,10 +1,13 @@
 package com.sw.s3.notice;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+
+import com.sw.s3.util.Pager;
 
 @Repository
 public class NoticeDAO {
@@ -13,8 +16,11 @@ public class NoticeDAO {
 	private SqlSession sqlSession;
 	private final String NAMESPACE = "com.sw.s3.notice.NoticeDAO.";
 	
-	public List<NoticeDTO> getList() throws Exception{
-		return sqlSession.selectList(NAMESPACE+"getList");
+	public List<NoticeDTO> getList(Pager pager) throws Exception{
+//		HashMap<String, Long> map = new HashMap<String, Long>();
+//		map.put("startRow", 1L);
+//		map.put("lastRow", 10L);
+		return sqlSession.selectList(NAMESPACE+"getList", pager);
 	}
 	
 	public NoticeDTO getSelect(NoticeDTO noticeDTO) throws Exception {

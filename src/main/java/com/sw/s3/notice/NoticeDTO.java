@@ -9,7 +9,7 @@ public class NoticeDTO {
 	private String writer;
 	private String contents;
 	private long hit;
-	private Date regdate;
+	private Date regDate;
 	
 	
 	public long getNum() {
@@ -42,11 +42,12 @@ public class NoticeDTO {
 	public void setHit(long hit) {
 		this.hit = hit;
 	}
-	public Date getRegdate() {
-		return regdate;
+	public Date getRegDate() {
+		return regDate;
 	}
-	public void setRegdate(Date regdate) {
-		this.regdate = regdate;
+	public void setRegDate(Date regDate) {
+		this.regDate = regDate;
 	}
+
 	
 }

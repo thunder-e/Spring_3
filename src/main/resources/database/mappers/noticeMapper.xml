@@ -5,8 +5,11 @@
 
 <mapper namespace="com.sw.s3.notice.NoticeDAO">
 
-	<select id="getList" resultType="NoticeDTO">
-		select num, title, writer, regdate, hit from notice
+	<select id="getList" resultType="NoticeDTO" parameterType="Pager">
+		select * from
+			(select rownum R, N.* from
+				(select * from notice where num>0 order by num desc) N)
+		where R between #{startRow} and #{lastRow}
 	</select>
 	
 	<select id="getSelect" parameterType="NoticeDTO" resultType="NoticeDTO">
@@ -18,7 +21,7 @@
 	</insert>
 	
 	<update id="setUpdate" parameterType="NoticeDTO">
-		update notice set title=#{title}, contents=#{contents}, writer=#{writer}, regdate=#{regdate}, hit=#{hit} where num=#{num}
+		update notice set title=#{title}, contents=#{contents}, writer=#{writer}, regDate=#{regDate}, hit=#{hit} where num=#{num}
 	</update>	
 	
 	<delete id="setDelete" parameterType="NoticeDTO">

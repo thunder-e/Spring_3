@@ -10,7 +10,11 @@ import org.springframework.stereotype.Repository;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+
+import com.sw.s3.util.Pager;
 
 @Controller
 @RequestMapping("/notice/**")
@@ -20,11 +24,24 @@ public class NoticeController {
 	private NoticeService noticeService;
 	
 	@RequestMapping("noticeList")
-	public void getList(Model model) throws Exception {
-		List<NoticeDTO> ar = noticeService.getList();
-		model.addAttribute("list", ar);
+	public ModelAndView getList(Pager pager) throws Exception { 		//b. 파라미터가 오지 않을 경우  @RequestParam(defaultValue="기본값") 데이터타입 변수명 @RequestParam(defaultValue = "1") long curPage
+		ModelAndView mv = new ModelAndView();
+		System.out.println(pager.getCurPage());
+		System.out.println("Service 호출전 : " + pager.getTotalPage());
+		List<NoticeDTO> ar = noticeService.getList(pager);
+		System.out.println("Service 호출후 : " + pager.getTotalPage());
+//		List<NoticeDTO> ar = noticeService.getList(curPage);
+		mv.addObject("list", ar);
+		mv.setViewName("notice/noticeList");
+		mv.addObject("pager", pager);
+		return mv;
 	}
 	
+	private boolean toString(long curPage) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
 	@RequestMapping("noticeSelect")
 	public void getSelect(NoticeDTO noticeDTO, Model model) throws Exception {
 		noticeDTO = noticeService.getSelect(noticeDTO);
