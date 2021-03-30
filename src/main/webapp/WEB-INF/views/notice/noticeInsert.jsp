@@ -10,23 +10,23 @@
 </head>
 <body>
 <c:import url="../template/header.jsp"></c:import>
-<h1>Notice Insert Page</h1>
 
 	<div class="container">
+		<h2>Notice form</h2>
 		<form action="./noticeInsert" method="post">
 			<div class="form-group">
-				<label for="title">Subject</label> 
+				<label for="writer">Writer:</label> 
+				<input type="text" readonly="readonly" value="${member.id}" class="form-control" id="writer" name="writer"> 
+			</div>
+		
+			<div class="form-group">
+				<label for="title">Title:</label> 
 				<input type="text" class="form-control" id="title" name="title"> 
 			</div>			
-			
+		
 			<div class="form-group">
-				<label for="writer">name</label> 
-				<input type="text" class="form-control" id="writer" name="writer"> 
-			</div>
-			
-			<div class="form-group">
-				<label for="contents">Contents</label> 
-				<input type="text" class="form-control" id="contents" name="contents"> 
+				<label for="contents">Contents:</label> 
+				 <textarea class="form-control" rows="5" id="contents" name="contents"></textarea>
 			</div>
 			
 			<button type="submit" class="btn btn-primary">Submit</button>

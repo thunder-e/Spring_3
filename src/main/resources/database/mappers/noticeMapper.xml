@@ -6,15 +6,46 @@
 <mapper namespace="com.sw.s3.notice.NoticeDAO">
 
 		
-	<select id="getTotalCount" resultType="Long">
+	<select id="getTotalCount" resultType="Long" parameterType="Pager">
 		select count(num) from notice
+		where 
+		<choose>
+			<when test="kind=='Writer'">
+				writer
+			</when>
+						
+			<when test="kind=='Contents'">
+				contents
+			</when>
+					
+			<otherwise>
+				title
+			</otherwise>
+		</choose>
+		like '%'||#{search}||'%' and num>0
+		
 	</select>
 	
 
 	<select id="getList" resultType="NoticeDTO" parameterType="Pager">
 		select * from
 			(select rownum R, N.* from
-				(select * from notice where num>0 order by num desc) N)
+				(select * from notice where 
+					<choose>
+						<when test="kind=='Writer'">
+							writer
+						</when>
+						
+						<when test="kind=='Contents'">
+							contents
+						</when>
+					
+						<otherwise>
+							title
+						</otherwise>
+					</choose>
+
+				like '%'||#{search}||'%' and num>0 order by num desc) N)
 		where R between #{startRow} and #{lastRow}
 	</select>
 	

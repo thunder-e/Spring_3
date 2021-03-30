@@ -7,6 +7,20 @@
 	
 	<select	id="getTotalCount" resultType="long">
 		select count(bookNumber) from bankbook
+		where
+		<choose>
+			<when test="kind='bookNumber'">
+				bookNumber
+			</when>
+			<when test="kind='bookName'">
+				bookName
+			</when>
+			<otherwise>
+				bookSale
+			</otherwise>
+		</choose>
+		like '%'||#{search}||'%' and bookNumber>0
+		
 	</select>
 	
 	
@@ -23,11 +37,26 @@
 		select * from bankbook where bookNumber=#{bookNumber}
 	</select>
 
-	<select id="getList" resultType="com.sw.s3.bankbook.BankBookDTO">
+	<select id="getList" resultType="com.sw.s3.bankbook.BankBookDTO" >
 		select * from
 			(select rownum R, N.* from
-				(select * from bankbook where bookNumber>0 order by bookNumber desc) N)
-		where R between ${startRow} and ${lastRow}
+				(select * from bankbook where 
+					<choose>
+						<when test="kind == 'bookNumber'">
+							bookNumber
+						</when>
+						<when test="kind == 'bookName'">
+							bookName
+						</when>
+						<otherwise>
+							bookSale
+						</otherwise>
+					
+					</choose>
+				
+				
+				like '%'||#{search}||'%' and bookNumber>0 order by bookNumber desc) N)
+		where R between #{startRow} and #{lastRow}
 	</select>
 
 	<delete id="setDelete" parameterType="com.sw.s3.bankbook.BankBookDTO">

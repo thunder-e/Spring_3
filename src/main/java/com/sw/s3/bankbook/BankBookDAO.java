@@ -21,8 +21,8 @@ public class BankBookDAO {
 	private final String NAMESPACE="com.sw.s3.bankbook.BankBookDAO"; //Mapper의 namespace이름과 동일하게
 	
 	
-	public long getTotalCount() throws Exception {
-		return sqlSession.selectOne(NAMESPACE+".getTotalCount");
+	public long getTotalCount(Pager pager) throws Exception {
+		return sqlSession.selectOne(NAMESPACE+".getTotalCount", pager);
 	}
 	
 	

@@ -34,7 +34,7 @@ public class BankBookService {
 		
 		
 		//1. totalCount 
-		long totalCount = bankBookDAO.getTotalCount();
+		long totalCount = bankBookDAO.getTotalCount(pager);
 		
 		//2. totalPage 
 		long totalPage= totalCount / perPage;
