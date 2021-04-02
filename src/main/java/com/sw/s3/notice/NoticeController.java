@@ -1,7 +1,6 @@
 package com.sw.s3.notice;
 
 import java.util.List;
-
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -51,9 +50,20 @@ public class NoticeController {
 		
 	}
 	@RequestMapping(value = "noticeInsert", method = RequestMethod.POST)
-	public String setInset(NoticeDTO noticeDTO) throws Exception {
+	public String setInset(NoticeDTO noticeDTO, Model model) throws Exception {
 		int result = noticeService.setInsert(noticeDTO);
-		return "redirect:noticeList";
+		
+		String message = "등록 실패";
+		
+		if(result>0) {
+			message = "공지글이 작성되었습니다";
+		}
+		
+		model.addAttribute("msg", message);
+		model.addAttribute("path", "./noticeList");
+		
+		return "common/commonResult";
+		//return "redirect:noticeList";
 	}
 	
 	@RequestMapping("noticeUpdate")

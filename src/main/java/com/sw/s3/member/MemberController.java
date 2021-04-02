@@ -83,12 +83,10 @@ public class MemberController {
 	
 	@RequestMapping(value="memberJoin", method = RequestMethod.POST)
 	public String memberJoin(MemberDTO memberDTO, Model model) throws Exception {
-		//int result = memberService.memberJoin(memberDTO);
-		Random random = new Random();
-		int result = random.nextInt(2); //0이상 2미만
-		
+		int result = memberService.memberJoin(memberDTO);
+
 		String message = "회원가입 실패";
-		String path = "./memberJoin";
+		String path = "./memberJoin"; //url주소창 보고 현재 위치가 member폴더 밑
 		
 		if(result>0) {
 			message="회원가입 성공";
@@ -98,7 +96,7 @@ public class MemberController {
 		model.addAttribute("msg", message);
 		model.addAttribute("path", path);
 		
-		return "member/memberJoinResult";
+		return "common/commonResult"; //dispatcherServlet에서 앞뒤로 붙여줘
 	}
 	
 	
