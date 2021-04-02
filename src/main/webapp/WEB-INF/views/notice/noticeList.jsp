@@ -14,9 +14,7 @@
 
 
 <div class="container">
-	<div>
-		<img alt="" src="../resources/images/img.png">
-	</div>
+
 
 <h2>Notice List Page</h2>
 <table class="table">
