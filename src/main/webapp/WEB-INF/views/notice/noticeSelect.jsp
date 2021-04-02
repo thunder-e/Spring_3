@@ -11,9 +11,9 @@
 <body>
 <c:import url="../template/header.jsp"></c:import>
 
-<h2>Notice Select Page</h2>
 
 <div class="container">
+<h2>Notice Select Page</h2>
 <table class="table">
 	<thead class="thead-dark">
 		<tr>

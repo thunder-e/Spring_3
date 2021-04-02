@@ -5,8 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.sw.s3.notice.NoticeDAO;
-import com.sw.s3.notice.NoticeService;
+import com.sw.s3.board.notice.NoticeDAO;
+import com.sw.s3.board.notice.NoticeService;
 import com.sw.s3.util.Pager;
 
 @Service

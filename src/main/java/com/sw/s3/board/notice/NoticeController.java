@@ -1,4 +1,4 @@
-package com.sw.s3.notice;
+package com.sw.s3.board.notice;
 
 import java.util.List;
 import javax.servlet.http.HttpSession;

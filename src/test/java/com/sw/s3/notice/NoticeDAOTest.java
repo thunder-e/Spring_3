@@ -10,6 +10,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.sw.s3.MyAbstractTest;
 import com.sw.s3.bankbook.BankBookDTO;
+import com.sw.s3.board.notice.NoticeDAO;
+import com.sw.s3.board.notice.NoticeDTO;
 
 public class NoticeDAOTest extends MyAbstractTest {
 
