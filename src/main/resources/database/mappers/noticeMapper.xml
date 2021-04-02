@@ -23,7 +23,6 @@
 			</otherwise>
 		</choose>
 		like '%'||#{search}||'%' and num>0
-		
 	</select>
 	
 
@@ -49,11 +48,11 @@
 		where R between #{startRow} and #{lastRow}
 	</select>
 	
-	<select id="getSelect" parameterType="NoticeDTO" resultType="NoticeDTO">
+	<select id="getSelect" parameterType="BoardDTO" resultType="NoticeDTO">
 		select * from notice where num = #{num}
 	</select>
 	
-	<insert id="setInsert" parameterType="NoticeDTO">
+	<insert id="setInsert" parameterType="BoardDTO">
 		insert into notice values (notice_seq.nextval, #{title}, #{writer}, #{contents}, 0, sysdate) 
 	</insert>
 	
@@ -62,7 +61,7 @@
 	</update>	
 	
 	<delete id="setDelete" parameterType="NoticeDTO">
-		delete notice where num=#{num}
+		delete notice where num = #{num}
 	</delete>
 	
 	<update id="setHitUpdate" parameterType="NoticeDTO">

@@ -74,29 +74,38 @@ public class NoticeService implements BoardService {
 	
 		pager.setStartNum(startNum);
 		pager.setLastNum(lastNum);
-		System.out.println("TotalPage : " + totalPage);
-		System.out.println("TotalBlock : " + totalBlock);
-		System.out.println("CurBlock : " + curBlock);
+		//System.out.println("TotalPage : " + totalPage);
+		//System.out.println("TotalBlock : " + totalBlock);
+		//System.out.println("CurBlock : " + curBlock);
 		
 				
 		return noticeDAO.getList(pager);
 	}
-	
-	public NoticeDTO getSelect(NoticeDTO noticeDTO) throws Exception {
-		noticeDAO.setHitUpdate(noticeDTO); 
-		return noticeDAO.getSelect(noticeDTO);
+
+	@Override
+	public BoardDTO getSelect(BoardDTO boardDTO) throws Exception {
+		noticeDAO.setHitUpdate(boardDTO);
+		return noticeDAO.getSelect(boardDTO);
+	}
+
+	@Override
+	public int setInsert(BoardDTO boardDTO) throws Exception {
+		return noticeDAO.setInsert(boardDTO);
+	}
+
+	@Override
+	public int setUpdate(BoardDTO boardDTO) throws Exception {
+		System.out.println("NUM : " + boardDTO.getNum());
+		return noticeDAO.setUpdate(boardDTO);
+	}
+
+	@Override
+	public int setDelete(BoardDTO boardDTO) throws Exception {
+		return noticeDAO.setDelete(boardDTO);
 	}
 	
-	public int setInsert(NoticeDTO noticeDTO) throws Exception {
-		return noticeDAO.setInsert(noticeDTO);
-	}
 	
-	public int setUpdate(NoticeDTO noticeDTO) throws Exception {
-		return noticeDAO.setUpdate(noticeDTO);
-	}
 	
-	public int setDelete(NoticeDTO noticeDTO) throws Exception {
-		return noticeDAO.setDelete(noticeDTO);
-	}
+	
 
 }

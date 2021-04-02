@@ -13,7 +13,7 @@
 
 
 <div class="container">
-<h2>Notice Select Page</h2>
+<h2>${board} Select Page</h2>
 <table class="table">
 	<thead class="thead-dark">
 		<tr>
@@ -33,14 +33,13 @@
 	</tbody>
 </table>
 		<div>${dto.contents}</div>
-	
 </div>
 
 <c:catch>
 <c:if test="${member.id eq 'admin'}">
 <div class="container">
-<a href="./noticeUpdate" class="btn btn-primary" role="button">Update</a>
-<a href="./noticeDelete" class="btn btn-primary" role="button">Delete</a>
+<a href="./${board}Update?num=${dto.num}" class="btn btn-primary" role="button">Update</a>
+<a href="./${board}Delete?num=${dto.num}" class="btn btn-danger" role="button">Delete</a>
 </div>
 </c:if>
 </c:catch>

@@ -10,10 +10,10 @@
 </head>
 <body>
 <c:import url="../template/header.jsp"></c:import>
-<h1>Notice Update Page</h1>
 
 	<div class="container">
-		<form action="./noticeUpdate" method="post">
+<h1>${board} Update Page</h1>
+		<form action="./${board}Update" method="post">
 			<input type="hidden" name="num" value="${dto.num}">
 			
 			<div class="form-group">
@@ -21,18 +21,20 @@
 				<input type="text" class="form-control" id="title" name="title" value="${dto.title}"> 
 			</div>			
 			
-			<div class="form-group">
+<%-- 		<div class="form-group">
 				<label for="writer">name</label> 
 				<input type="text" class="form-control" id="writer" name="writer" value="${dto.writer}"> 
 			</div>
+--%>	
 			
 			<div class="form-group">
 				<label for="contents">Contents</label> 
 				<input type="text" class="form-control" id="contents" name="contents" value="${dto.contents}"> 
 			</div>
 			
+			<input type="hidden" name="writer" value="${dto.writer}">
 			<input type="hidden" name="hit" value="${dto.hit}">
-			<input type="hidden" name="regdate" value="${dto.regdate}">
+			<input type="hidden" name="regDate" value="${dto.regDate}">
 			
 			
 			

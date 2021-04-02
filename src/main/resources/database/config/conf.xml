@@ -10,6 +10,7 @@
 		<typeAlias type="com.sw.s3.account.AccountDTO" alias="AccountDTO"/>
 		<typeAlias type="com.sw.s3.board.notice.NoticeDTO" alias="NoticeDTO"/>
 		<typeAlias type="com.sw.s3.board.qna.QnaDTO" alias="QnaDTO"/>
+		<typeAlias type="com.sw.s3.board.BoardDTO" alias="BoardDTO"/>
 		<typeAlias type="com.sw.s3.util.Pager" alias="Pager"/>
 		
 		<typeAlias type="java.lang.Long" alias="Long"/>

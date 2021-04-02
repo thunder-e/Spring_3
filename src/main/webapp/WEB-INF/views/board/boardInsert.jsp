@@ -12,8 +12,8 @@
 <c:import url="../template/header.jsp"></c:import>
 
 	<div class="container">
-		<h2>Notice form</h2>
-		<form id="frm" action="./noticeInsert" method="post">
+		<h2>${board} form</h2>
+		<form id="frm" action="./${board}Insert" method="post">
 			<div class="form-group">
 				<label for="writer">Writer:</label> 
 				<input type="text" readonly="readonly" value="${member.id}" class="form-control" id="writer" name="writer"> 

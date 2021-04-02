@@ -8,6 +8,64 @@
 	<select id="getList" resultType="QnaDTO">
 		select * from qna order by num desc
 	</select>
+	
+	<select id="getSelect" resultType="QnaDTO" parameterType="QnaDTO">
+		select * from qna where num=#{num}
+	</select>
+
+	<insert id="setInsert" parameterType="QnaDTO">
+		insert into qna values (qna_seq.nextval, #{title},#{writer},#{contents},sysdate,0,0,0,0)
+	</insert>
+
+	<select id="getTotalCount" resultType="Long" parameterType="Pager">
+		select count(num) from qna
+		where 
+		<choose>
+			<when test="kind=='Writer'">
+				writer
+			</when>
+						
+			<when test="kind=='Contents'">
+				contents
+			</when>
+					
+			<otherwise>
+				title
+			</otherwise>
+		</choose>
+		like '%'||#{search}||'%' and num>0
+	</select>
+
+
+	<update id="setHitUpdate" parameterType="QnaDTO">
+		update qna set hit(select hit from qna where num = #{num}+1 where num = #{num})
+	</update>
+
+
+	<update id="setUpdate" parameterType="QnaDTO">
+		update qna set title=#{title}, contents=#{contents} where num=#{num}
+	</update>
+
+
+	<delete id="setDelete" parameterType="QnaDTO">
+		delete qna where num = #{num}
+	</delete>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 </mapper>
