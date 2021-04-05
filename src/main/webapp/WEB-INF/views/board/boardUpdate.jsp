@@ -14,11 +14,11 @@
 	<div class="container">
 <h1>${board} Update Page</h1>
 		<form action="./${board}Update" method="post">
-			<input type="hidden" name="num" value="${dto.num}">
+			<input type="hidden" name="num" value="${param.num}">
 			
 			<div class="form-group">
 				<label for="title">Subject</label> 
-				<input type="text" class="form-control" id="title" name="title" value="${dto.title}"> 
+				<input type="text" class="form-control" id="title" name="title" value="${param.title}"> 
 			</div>			
 			
 <%-- 		<div class="form-group">
@@ -29,8 +29,9 @@
 			
 			<div class="form-group">
 				<label for="contents">Contents</label> 
-				<input type="text" class="form-control" id="contents" name="contents" value="${dto.contents}"> 
+				<input type="text" class="form-control" id="contents" name="contents" value="${param.contents}"> 
 			</div>
+			
 			
 			<input type="hidden" name="writer" value="${dto.writer}">
 			<input type="hidden" name="hit" value="${dto.hit}">
