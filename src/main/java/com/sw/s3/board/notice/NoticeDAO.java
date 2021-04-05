@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 import com.sw.s3.board.BoardDAO;
 import com.sw.s3.board.BoardDTO;
 import com.sw.s3.util.Pager;
+import com.sw.s3.util.Pager_backUp;
 
 @Repository
 public class NoticeDAO implements BoardDAO {

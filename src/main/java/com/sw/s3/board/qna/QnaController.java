@@ -12,6 +12,9 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.sw.s3.board.BoardDTO;
 import com.sw.s3.util.Pager;
+import com.sw.s3.util.Pager_backUp;
+
+import oracle.jdbc.proxy.annotation.Post;
 
 @Controller
 @RequestMapping("/qna/**")
@@ -20,6 +23,27 @@ public class QnaController {
 	@Autowired
 	private QnaService qnaService;
 	
+	
+	
+	@PostMapping("qnaReply")
+	public ModelAndView setReply(QnaDTO qnaDTO) throws Exception {
+		ModelAndView mv = new ModelAndView();
+		int result = qnaService.setReply(qnaDTO);
+		mv.setViewName("redirect:./qnaList");
+		
+		return mv;
+	}
+	
+	@GetMapping("qnaReply")
+	public ModelAndView setReply() throws Exception {
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("board/boardReply");
+		mv.addObject("board", "qna");
+
+		return mv;
+	}
+	
+	
 	@GetMapping("qnaList")
 	public ModelAndView getList(Pager pager) throws Exception {
 		ModelAndView mv = new ModelAndView();
@@ -27,7 +51,7 @@ public class QnaController {
 		mv.addObject("list", ar);
 		mv.addObject("board", "qna");
 		mv.setViewName("board/boardList");
-	
+		mv.addObject("pager", pager);
 		return mv;
 }
 	
@@ -41,17 +65,19 @@ public class QnaController {
 	}
 	
 	@PostMapping("qnaInsert")
-	public String setInsert(QnaDTO qnaDTO, Model model) throws Exception {
-		int result = qnaService.setInsert(qnaDTO);
+	public ModelAndView setInsert(BoardDTO boardDTO) throws Exception {
+		ModelAndView mv = new ModelAndView();
+		int result = qnaService.setInsert(boardDTO);
+		mv.setViewName("redirect:./qnaList");
 		
-		return "redirect:./qnaList";
+		return mv;
 	}
 	
 	@GetMapping("qnaSelect")
-	public ModelAndView getSelect(QnaDTO qnaDTO) throws Exception{
+	public ModelAndView getSelect(BoardDTO boardDTO) throws Exception{
 		ModelAndView mv = new ModelAndView();
-		qnaDTO = (QnaDTO)qnaService.getSelect(qnaDTO);
-		mv.addObject("dto", qnaDTO);
+		boardDTO = qnaService.getSelect(boardDTO);
+		mv.addObject("dto", boardDTO);
 		mv.addObject("board", "qna");
 		mv.setViewName("board/boardSelect");
 		

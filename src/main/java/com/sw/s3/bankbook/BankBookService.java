@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.sw.s3.board.notice.NoticeDAO;
 import com.sw.s3.board.notice.NoticeService;
-import com.sw.s3.util.Pager;
+import com.sw.s3.util.Pager_backUp;
 
 @Service
 public class BankBookService {
@@ -20,7 +20,7 @@ public class BankBookService {
 		
 	}
 	
-	public List<BankBookDTO> getList(Pager pager) throws Exception {
+	public List<BankBookDTO> getList(Pager_backUp pager) throws Exception {
 		int perPage=10; // 한 페이지당 보여줄 글의 갯수
 		int perBlock=5; // 한 블럭당 보여줄 숫자의 갯수
 		

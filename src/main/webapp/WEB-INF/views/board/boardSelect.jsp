@@ -40,6 +40,9 @@
 <div class="container">
 <a href="./${board}Update?num=${dto.num}" class="btn btn-primary" role="button">Update</a>
 <a href="./${board}Delete?num=${dto.num}" class="btn btn-danger" role="button">Delete</a>
+<c:if test="${board ne 'notice'}">
+	<a href="./${board}Reply?num=${dto.num}" class="btn btn-info">Reply</a>
+</c:if>
 </div>
 </c:if>
 </c:catch>

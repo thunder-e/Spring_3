@@ -17,6 +17,7 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 import com.sw.s3.board.BoardDTO;
 import com.sw.s3.util.Pager;
+import com.sw.s3.util.Pager_backUp;
 
 @Controller
 @RequestMapping("/notice/**")

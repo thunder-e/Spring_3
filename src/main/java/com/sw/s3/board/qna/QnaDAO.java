@@ -9,6 +9,9 @@ import org.springframework.stereotype.Repository;
 import com.sw.s3.board.BoardDAO;
 import com.sw.s3.board.BoardDTO;
 import com.sw.s3.util.Pager;
+import com.sw.s3.util.Pager_backUp;
+
+import oracle.net.aso.q;
 
 @Repository
 public class QnaDAO implements BoardDAO{
@@ -16,6 +19,14 @@ public class QnaDAO implements BoardDAO{
 	@Autowired
 	private SqlSession sqlSession;
 	private final String NAMESPACE = "com.sw.s3.board.qna.QnaDAO.";
+	
+	public int setReplyUpdate(QnaDTO qnaDTO) throws Exception {
+		return sqlSession.update(NAMESPACE+"setReplyUpdate", qnaDTO);
+	}
+	
+	public int setReply(QnaDTO qnaDTO) throws Exception {
+		return sqlSession.insert(NAMESPACE+"setReply", qnaDTO);
+	}
 	
 
 	@Override
