@@ -12,36 +12,29 @@
 <c:import url="../template/header.jsp"></c:import>
 
 	<div class="container">
-<h1>${board} Update Page</h1>
-		<form action="./${board}Update" method="post">
-			<input type="hidden" name="num" value="${param.num}">
-			
+		<h2>${board} Update form</h2>
+		<form id="frm" action="./${board}Update" method="post">
+			<input type="hidden" name="num" value="${param.num}"> 
 			<div class="form-group">
-				<label for="title">Subject</label> 
-				<input type="text" class="form-control" id="title" name="title" value="${param.title}"> 
+				<label for="writer">Writer:</label> 
+				<input type="text" readonly="readonly" value="${dto.writer}" class="form-control" id="writer" name="writer"> 
+			</div>
+		
+			<div class="form-group">
+				<label for="title">Title:</label> 
+				<input type="text" class="form-control" value="${dto.title}" id="title" name="title"> 
 			</div>			
-			
-<%-- 		<div class="form-group">
-				<label for="writer">name</label> 
-				<input type="text" class="form-control" id="writer" name="writer" value="${dto.writer}"> 
-			</div>
---%>	
-			
+		
 			<div class="form-group">
-				<label for="contents">Contents</label> 
-				<input type="text" class="form-control" id="contents" name="contents" value="${param.contents}"> 
+				<label for="contents">Contents:</label> 
+				 <textarea class="form-control" rows="5" id="contents" name="contents"> ${dto.contents}</textarea>
 			</div>
 			
-			
-			<input type="hidden" name="writer" value="${dto.writer}">
-			<input type="hidden" name="hit" value="${dto.hit}">
-			<input type="hidden" name="regDate" value="${dto.regDate}">
-			
-			
-			
-			<button type="submit" class="btn btn-primary">Submit</button>
+			<input type="submit" id="btn" value="Update" class="btn btn-primary">
 		</form>
 	</div>
 
+
+<!--  <script type="text/javascript" src="../resources/js/insertCheck.js"></script> -->
 </body>
 </html>

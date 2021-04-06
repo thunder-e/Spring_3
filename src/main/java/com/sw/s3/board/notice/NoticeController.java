@@ -83,26 +83,49 @@ public class NoticeController {
 	
 	
 	@GetMapping("noticeUpdate")
-	public ModelAndView setUpdate() throws Exception {
+	public ModelAndView setUpdate(BoardDTO boardDTO) throws Exception {
 		ModelAndView mv = new ModelAndView();
+		boardDTO = noticeService.getSelect(boardDTO);
+		
+		mv.addObject("dto", boardDTO);
 		mv.addObject("board", "notice");
 		mv.setViewName("board/boardUpdate");
 		return mv;
 	}
 	
 	@PostMapping("noticeUpdate")
-	public String setUpdate(BoardDTO boardDTO, Model model) throws Exception {
-		System.out.println(boardDTO.getNum());
+	public ModelAndView setUpdate(BoardDTO boardDTO,ModelAndView mv) throws Exception {
 		int result = noticeService.setUpdate(boardDTO);
-		model.addAttribute("dto", boardDTO);
 		
-		return "redirect:./noticeList";
+		//성공하면 리스트로 이동
+		if(result>0) {
+			mv.setViewName("redirect:./noticeList");
+		}else {
+			//실패하면 수정실패, 리스트로 이동
+			mv.addObject("msg", "수정 실패");
+			mv.addObject("path", "./noticeList");
+			mv.setViewName("common/commonResult");
+		}
+		
+		return mv;
 	}
 	
-	@RequestMapping("noticeDelete")
-	public String setDelete(BoardDTO boardDTO) throws Exception {
+	@PostMapping("noticeDelete")
+	public ModelAndView setDelete(BoardDTO boardDTO) throws Exception {
+		ModelAndView mv = new ModelAndView();
 		int result = noticeService.setDelete(boardDTO);
-		return "redirect:./noticeList";
+		
+		String message="삭제 실패";
+		String path="./noticeList";
+		
+		if(result>0) {
+			message="삭제 성공";
+		}
+		mv.addObject("msg",message);
+		mv.addObject("path", path);
+		mv.setViewName("common/commonResult");
+		
+		return mv;
 	}
 	
 	

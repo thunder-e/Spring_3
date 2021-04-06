@@ -41,7 +41,6 @@ public class NoticeService implements BoardService {
 
 	@Override
 	public int setUpdate(BoardDTO boardDTO) throws Exception {
-		System.out.println("NUM : " + boardDTO.getNum());
 		return noticeDAO.setUpdate(boardDTO);
 	}
 
