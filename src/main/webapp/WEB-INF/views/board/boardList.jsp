@@ -50,33 +50,30 @@
 
 			<ul class="pagination">
 				<c:if test="${pager.pre}">
-					<li class="page-item"><a class="page-link"
-						href="./${board}List?curPage=${pager.startNum-1}&kind=${pager.kind}&search=${pager.search}">Previous</a></li>
+					<li class="page-item"><a class="page-link p" href="#" title="${pager.startNum-1}">Previous</a></li>
 				</c:if>
 
 				<c:forEach begin="${pager.startNum}" end="${pager.lastNum}" var="i">
-					<li class="page-item"><a class="page-link"
-						href="./${board}List?curPage=${i}&kind=${pager.kind}&search=${pager.search}">${i}</a></li>
+					<li class="page-item"><a class="page-link p" href="#" title="${i}">${i}</a></li>
 				</c:forEach>
 
 				<c:if test="${pager.next}">
-					<li class="page-item"><a class="page-link"
-						href="./${board}List?curPage=${pager.lastNum+1}&kind=${pager.kind}&search=${pager.search}">Next</a></li>
+					<li class="page-item"><a class="page-link p" href="#" title="${pager.lastNum+1}">Next</a></li>
 				</c:if>
 			</ul>
 
 
 			<div class="input-group mt-3 mb-3">
-				<form action="./${board}List" class="form-inline">
+				<form id="frm" action="./${board}List" class="form-inline">
+				<input type="hidden" name="curPage" value="1" id="curPage">
 					<div class="input-group-prepend">
-						<select class="form-control" name="kind" id="sel1">
-							<option>Title</option>
-							<option>Contents</option>
-							<option>Writer</option>
+						<select class="form-control" name="kind" id="kind">
+							<option class="sel">Title</option>
+							<option class="sel">Contents</option>
+							<option class="sel">Writer</option>
 						</select>
 					</div>
-					<input type="text" class="form-control" name="search"
-						placeholder="">
+					<input type="text" class="form-control" name="search" id="search" placeholder="" value="${pager.search}">
 					<div class="input-group-append">
 						<button class="btn btn-success" type="submit">Search</button>
 					</div>
@@ -85,10 +82,33 @@
 
 
 			<a href="./${board}Insert" class="btn btn-primary" role="button">Write</a>
+<script type="text/javascript">
+	
+		let kind = '${pager.kind}';
+		$(".sel").each(function(){
+			let t = $(this).text();
+		if(t == kind) {
+			$(this).prop("selected",true);
+		}
+		});
+		
+	 $(".p").click(function(){
+		$("#curPage").val(curPage);
+		let curPage = $(this).attr("title");
+		let search = '${pager.search}';
+		
+		$("#frm").submit();
+/* 		$("#curPage").val(curPage);
+		$("#kind").val(kind);
+		$("#search").val(search);
+		 */
+		// location.href="./${board}List?curPage="+curPage+"&kind=${pager.kind}&search=${pager.search}";
+	 })
+	
+</script>
+
 
 		</div>
-
-
 
 	</div>
 

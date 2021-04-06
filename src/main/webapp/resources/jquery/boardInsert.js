@@ -22,7 +22,7 @@ $("#btn").click(function(){
 	} else {
 		alert("필수 요소를 입력하세요");
 	}	
-
+	
 })
 
 

@@ -7,6 +7,11 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <c:import url="../template/bootStrap.jsp"></c:import>
+<style type="text/css">
+	#sample {
+		display: none;
+	}
+</style>
 </head>
 <body>
 <c:import url="../template/header.jsp"></c:import>
@@ -28,13 +33,31 @@
 				<label for="contents">Contents:</label> 
 				 <textarea class="form-control myCheck" rows="5" id="contents" name="contents"></textarea>
 			</div>
+			<input type="button" id="add" value="ADD" class="btn btn-danger">
+			<div id="files">
+				
+			</div>
+			
 			
 			<input type="button" id="btn" value="WRITE" class="btn btn-primary">
 		</form>
 	</div>
-
-
+	
+	<div id="sample">
+		<div class="form-group">
+	      <input type="file" class="form-control-file border" name="file">
+	    </div>
+    </div>
 
   <script type="text/javascript" src="../resources/jquery/boardInsert.js"></script> 
+  <script type="text/javascript">
+  	
+  
+  	$("#add").click(function(){
+  		$("#files").append($("#sample").html());
+  		//if($("#files").
+  	})
+  
+  </script>
 </body>
 </html>
