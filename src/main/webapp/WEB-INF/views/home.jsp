@@ -18,31 +18,32 @@
 <c:import url="./template/header.jsp"></c:import>
 	
 	
-<button onclick="go()">BUTTON</button>
-<button id="btn">CLICK</button>
-<button id="btn2">CLICK2</button>
-<h1>version 4</h1>
- 
+<button class="b">BUTTON</button>
+<button id="btn" class="b">CLICK</button>
+<button id="btn2" class="b">CLICK2</button>
+<h1 id="t">version 3</h1>
+<ol id="result">
+	<li>A</li>
+</ol>
+
+
+<select id="mon">
+	
+</select>
+
  
  
 <script type="text/javascript">
-	let btn = document.getElementById("btn");
-	let btn2 = document.getElementById("btn2");
-	
-	btn2.addEventListener("click", function(){
-		alert("btn2")
-		go();
+
+	$("#btn2").click(function(){
+		$("#result").prepend('<li>GO</li>');
 	});
 	
-	//btn.onclick=go;
-	btn.onclick = function() {
-		alert("익명함수");
-		go();
-	}
 	
-	function go() {
-		alert("hello");
-	}
+
+		for(let i=1;i<13;i++){
+		$("#mon").append("<option>"+i+"</option>");
+		}
 </script>
  
 </body>
