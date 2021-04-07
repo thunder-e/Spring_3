@@ -13,6 +13,22 @@
 
 <link rel="stylesheet" href="./resources/css/test.css">
 <title>Home</title>
+<style>
+	#d1 {
+		width: 200px;
+		height: 200px;
+		background-color: red;
+		overflow: hidden;
+	}
+	
+	#d2 {
+		width: 50px;
+		height: 50px;
+		background-color: yellow;
+		margin: 75px auto;
+	}
+
+</style>
 </head>
 <body>
 <c:import url="./template/header.jsp"></c:import>
@@ -31,6 +47,10 @@
 	
 </select>
 
+<div id="d1">
+	<div id="d2"></div>
+</div>
+
  
  
 <script type="text/javascript">
@@ -41,9 +61,18 @@
 	
 	
 
-		for(let i=1;i<13;i++){
+	for(let i=1;i<13;i++){
 		$("#mon").append("<option>"+i+"</option>");
-		}
+	}
+	
+	$("#d1").click(function(){
+		console.log("parent");
+	})
+	
+	
+	$("#d2").click(function(){
+		console.log("child");
+	})
 </script>
  
 </body>
