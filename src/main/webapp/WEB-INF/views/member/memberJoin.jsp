@@ -25,7 +25,7 @@
 <div class="container">
 		<h2>Member Join Page</h2>
 
-		<form id="frm" action="./memberJoin" method="post">
+		<form id="frm" action="./memberJoin" method="post" enctype="multipart/form-data">
 			<div class="form-group">
 				<label for="id">ID</label> 
 				<input type="text" class="form-control" id="id" name="id">
@@ -49,20 +49,26 @@
 			<div class="form-group">
 				<label for="name">Name</label> 
 				<input type="text" class="form-control etc" id="name" name="name"> 
-			</div>
 			<!-- 비어 있으면 X -->
+			</div>
 			
 			<div class="form-group">
 				<label for="phone">Phone</label> 
 				<input type="text" class="form-control etc" id="phone" name="phone"> 
-			</div>
 			<!-- 비어 있으면 X -->
+			</div>
 			
 			<div class="form-group">
 				<label for="email">Email</label> 
 				<input type="text" class="form-control etc" id="email" name="email"> 
-			</div>
 			<!-- 비어 있으면 X -->
+			</div>
+
+			<div class="form-group">
+				<label for="avatar">Avatar</label> 
+				<input type="file" class="form-control etc" id="avatar" name="avatar">  <!-- parameter 이름이 avatar -->
+			<!-- 비어 있으면 X -->
+			</div>
 
 			
 			<input type="submit" id="btn" value="JOIN" class="btn btn-primary">

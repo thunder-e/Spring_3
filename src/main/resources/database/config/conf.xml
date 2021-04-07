@@ -12,6 +12,7 @@
 		<typeAlias type="com.sw.s3.board.qna.QnaDTO" alias="QnaDTO"/>
 		<typeAlias type="com.sw.s3.board.BoardDTO" alias="BoardDTO"/>
 		<typeAlias type="com.sw.s3.util.Pager" alias="Pager"/>
+		<typeAlias type="com.sw.s3.member.MemberFileDTO" alias="MemberFileDTO"/>
 		
 		<typeAlias type="java.lang.Long" alias="Long"/>
 	</typeAliases>

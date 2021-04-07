@@ -19,20 +19,20 @@ public class NoticeDAOTest extends MyAbstractTest {
 	private NoticeDAO noticeDAO;
 
 	//@Test 		//성공
-	public void getListTest() throws Exception {
+/*	public void getListTest() throws Exception {
 		List<NoticeDTO> ar = noticeDAO.getList();
 		assertNotEquals(0, ar.size());
 	}
 
 
 	//@Test			//성공
-	public void getSelectTest() throws Exception{
+/*	public void getSelectTest() throws Exception{
 		NoticeDTO noticeDTO = new NoticeDTO(); 
 		noticeDTO.setNum(1);
 		noticeDTO = noticeDAO.getSelect(noticeDTO);
 		assertNotNull(noticeDTO);
 	}
-
+*/
 
 	@Test			//성공 
 	public void setInsertTest() throws Exception {
@@ -57,7 +57,7 @@ public class NoticeDAOTest extends MyAbstractTest {
 		NoticeDTO noticeDTO = new NoticeDTO();
 		noticeDTO.setNum(3);
 
-		noticeDTO = noticeDAO.getSelect(noticeDTO);
+	/*	noticeDTO = noticeDAO.getSelect(noticeDTO);*/
 
 		noticeDTO.setTitle("update test");
 

@@ -6,6 +6,10 @@
 
 <mapper namespace="com.sw.s3.member.MemberDAO">
 
+	<insert id="setFileInsert" parameterType="MemberFileDTO">
+		insert into memberFile values (fn_seq.nextval, #{id}, #{fileName}, #{origineName})
+	</insert>
+
 	<select id="memberLogin" parameterType="MemberDTO" resultType="MemberDTO">
 		select * from member where id=#{id} and pw=#{pw}
 	</select>
