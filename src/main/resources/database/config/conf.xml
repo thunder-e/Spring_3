@@ -13,6 +13,7 @@
 		<typeAlias type="com.sw.s3.board.BoardDTO" alias="BoardDTO"/>
 		<typeAlias type="com.sw.s3.util.Pager" alias="Pager"/>
 		<typeAlias type="com.sw.s3.member.MemberFileDTO" alias="MemberFileDTO"/>
+		<typeAlias type="com.sw.s3.board.BoardFileDTO" alias="BoardFileDTO"/>
 		
 		<typeAlias type="java.lang.Long" alias="Long"/>
 	</typeAliases>

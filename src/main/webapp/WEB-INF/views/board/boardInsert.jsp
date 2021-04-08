@@ -18,7 +18,7 @@
 
 	<div class="container">
 		<h2>${board}form</h2>
-		<form id="frm" action="./${board}Insert" method="post">
+		<form id="frm" action="./${board}Insert" method="post" enctype="multipart/form-data">
 			<div class="form-group">
 				<label for="writer">Writer:</label> <input type="text"
 					readonly="readonly" value="${member.id}"
@@ -47,10 +47,8 @@
 	<div id="sample">
 		<div class="input-group">
 			<div class="custom-file">
-				<input type="file" class="custom-file-input" id="inputGroupFile04"
-					aria-describedby="inputGroupFileAddon04"> <label
-					class="custom-file-label" for="inputGroupFile04">Choose
-					file</label>
+				<input type="file"  id="inputGroupFile04"
+					class="form-control-file border" name="files">
 			</div>
 			<div class="input-group-append delete">
 				<input class="btn btn-outline-secondary" type="button"
@@ -59,7 +57,7 @@
 		</div>
 	</div>
 
-	<script type="text/javascript" src="../resources/jquery/boardInsert.js"></script>
+ 	<script type="text/javascript" src="../resources/jquery/boardInsert.js"></script>  
 	<script type="text/javascript" src="../resources/jquery/fileAdd.js"></script>
 </body>
 </html>

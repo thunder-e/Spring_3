@@ -8,6 +8,8 @@ $("#btn").click(function(){
 	let contents = $("#contents").val().length != 0;
 */
 	
+	let result = true;
+	
 	$(".myCheck").each(function(s1, s2){
 		console.log(s1);
 		console.log($(s2).val());

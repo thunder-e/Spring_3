@@ -10,9 +10,31 @@
 		insert into memberFile values (fn_seq.nextval, #{id}, #{fileName}, #{origineName})
 	</insert>
 
-	<select id="memberLogin" parameterType="MemberDTO" resultType="MemberDTO">
-		select * from member where id=#{id} and pw=#{pw}
+	<select id="memberLogin" parameterType="MemberDTO" resultMap="memberLoginResult">	
+		select M.*, MF.* 
+		from member M left join memberFile MF
+		on M.id = MF.id
+		where M.id=#{id} and M.pw=#{pw}
 	</select>
+	
+	<resultMap type="MemberDTO" id="memberLoginResult">
+		<id property="id" column="id"/>
+		<result property="pw" column="pw"/>
+		<result property="name" column="name"/>
+		<result property="phone" column="phone"/>
+		<result property="email" column="email"/>
+		<association property="memberFileDTO" javaType="MemberFileDTO" resultMap="memberFileResult">
+			
+		</association>
+	</resultMap>
+	
+	<resultMap type="MemberFileDTO" id="memberFileResult">
+		<id property="num" column="num"/>
+		<result property="fileName" column="fileName"/>
+		<result property="originName" column="originName"/>
+	</resultMap>
+	
+	
 	
 	<insert id="memberJoin" parameterType="MemberDTO">
 		insert into member values (#{id}, #{pw}, #{name}, #{phone}, #{email})
@@ -26,6 +48,9 @@
 		delete member where id=#{id}
 	</delete>
 	
+	<select id="memberLoginFile" resultType="MemberFileDTO" parameterType="MemberDTO">	<!-- resultType이 있으면 mybtis내에서 new MemberFileDTO하면서 setter로 넣어줘 -->
+		select * from memberFile where id=#{id}
+	</select>
 
 
 </mapper>   

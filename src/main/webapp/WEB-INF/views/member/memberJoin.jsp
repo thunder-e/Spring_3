@@ -42,7 +42,7 @@
 			
 			<div class="form-group">
 				<label for="pw">Password</label> 
-				<input type="password" class="form-control" id="pw2" name="pw">
+				<input type="password" class="form-control" id="pw2" name="pw2">
 			<!-- PW 두개는 일치  x: 확인용 지워줌-->
 			</div>
 			

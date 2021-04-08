@@ -5,6 +5,11 @@
 
 <mapper namespace="com.sw.s3.board.notice.NoticeDAO">
 
+
+	<insert id="setFileInsert" parameterType="BoardTypeDTO">
+		insert into noticeFiles values(file_seq.nextval, #{num}, #{fileName}, #{origineName})
+	</insert>
+
 		
 	<select id="getTotalCount" resultType="Long" parameterType="Pager">
 		select count(num) from notice
@@ -52,8 +57,12 @@
 		select * from notice where num = #{num}
 	</select>
 	
+	<select id="getNum" resultType="java.lang.Long">
+		select notice_seq.nextval from dual
+	</select>
+	
 	<insert id="setInsert" parameterType="BoardDTO">
-		insert into notice values (notice_seq.nextval, #{title}, #{writer}, #{contents}, 0, sysdate) 
+		insert into notice values (#{num}, #{title}, #{writer}, #{contents}, 0, sysdate) 
 	</insert>
 	
 	<update id="setUpdate" parameterType="BoardDTO">
