@@ -33,6 +33,13 @@
 			</tbody>
 		</table>
 		<div>${dto.contents}</div>
+		
+		<div>
+		<c:forEach items="${dto.noticeFiles}" var="file">
+			<a href="../resources/upload/${board}/${file.fileName}">${file.origineName}</a>
+		</c:forEach>
+		</div>
+		
 	</div>
 
 	<c:catch>

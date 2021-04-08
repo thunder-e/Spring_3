@@ -49,7 +49,7 @@ public class NoticeService implements BoardService {
 	@Override
 	public int setInsert(BoardDTO boardDTO, MultipartFile [] files) throws Exception {
 		
-		long num = noticeDAO.getNum();
+		long num =noticeDAO.getNum();
 		
 		boardDTO.setNum(num);
 		
@@ -57,9 +57,9 @@ public class NoticeService implements BoardService {
 		
 		//글번호 찾기
 		
-		for(MultipartFile mf : files) {	//files에서 꺼낸 애들을 반복문 돌립시다
+		for(MultipartFile mf : files) {
 			BoardFileDTO boardFileDTO = new BoardFileDTO();
-			String fileName = fileManager.save("notice", mf, session);
+			String fileName= fileManager.save("notice", mf, session);
 			
 			boardFileDTO.setNum(num);
 			boardFileDTO.setFileName(fileName);
