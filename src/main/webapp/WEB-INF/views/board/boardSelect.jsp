@@ -34,7 +34,7 @@
 		<div>${dto.contents}</div>
 
 		<div>
-			<c:forEach items="${dto.noticeFiles}" var="file">
+			<c:forEach items="${dto.boardFiles}" var="file">
 				<a href="../resources/upload/${board}/${file.fileName}">${file.origineName}</a>
 			</c:forEach>
 		</div>

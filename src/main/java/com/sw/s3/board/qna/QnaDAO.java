@@ -60,7 +60,6 @@ public class QnaDAO implements BoardDAO{
 	}
 	
 	
-	
 	@Override
 	public int setUpdate(BoardDTO boardDTO) throws Exception {
 		return sqlSession.update(NAMESPACE+"setUpdate", boardDTO);
