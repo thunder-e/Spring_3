@@ -11,9 +11,8 @@
 <body>
 	<c:import url="../template/header.jsp"></c:import>
 
-
 	<div class="container">
-		<h2>${board}Select Page</h2>
+		<h2>${board}SelectPage</h2>
 		<table class="table">
 			<thead class="thead-dark">
 				<tr>
@@ -33,13 +32,13 @@
 			</tbody>
 		</table>
 		<div>${dto.contents}</div>
-		
+
 		<div>
-		<c:forEach items="${dto.noticeFiles}" var="file">
-			<a href="../resources/upload/${board}/${file.fileName}">${file.origineName}</a>
-		</c:forEach>
+			<c:forEach items="${dto.noticeFiles}" var="file">
+				<a href="../resources/upload/${board}/${file.fileName}">${file.origineName}</a>
+			</c:forEach>
 		</div>
-		
+
 	</div>
 
 	<c:catch>

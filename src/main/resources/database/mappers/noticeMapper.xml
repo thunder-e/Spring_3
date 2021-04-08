@@ -28,7 +28,6 @@
 			<result property="fileName" column="fileName"/>
 			<result property="origineName" column="origineName"/>
 		</collection>
-		
 	</resultMap>
 
 
@@ -78,7 +77,7 @@
 	</select>
 	
 	<insert id="setInsert" parameterType="BoardDTO">
-		insert into notice values(#{num},#{title}, #{writer}, #{contents}, sysdate, 0)
+		insert into notice values(#{num},#{title}, #{writer}, #{contents},0,sysdate)
 	</insert>
 	
 	<delete id="setDelete" parameterType="BoardDTO">
@@ -89,5 +88,8 @@
 		update notice set title=#{title}, contents=#{contents} where num=#{num}
 	</update>
 
+		<update id="setHitUpdate" parameterType="BoardDTO">
+		update notice set hit=hit+1 where num=#{num}
+	</update>
 	
 </mapper>
