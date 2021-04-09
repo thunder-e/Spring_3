@@ -14,7 +14,6 @@ public class QnaDTO extends BoardDTO{
 	private List<BoardFileDTO> boardFiles;
 	
 	
-
 	public List<BoardFileDTO> getBoardFiles() {
 		return boardFiles;
 	}

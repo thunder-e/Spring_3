@@ -35,7 +35,7 @@ public class MemberController {
 	@RequestMapping("memberDelete")
 	public String memberDelete(HttpSession session) throws Exception {
 		MemberDTO memberDTO = (MemberDTO)session.getAttribute("member"); //object니까 형변환 필요
-		int result = memberService.memberDelete(memberDTO); //DB에서 삭제 session에서는 DTO가지고 있어
+		int result = memberService.memberDelete(memberDTO, session); //DB에서 삭제 session에서는 DTO가지고 있어
 		
 		session.invalidate(); // session에서도 로그아웃 시켜줘야 안뜸
 		

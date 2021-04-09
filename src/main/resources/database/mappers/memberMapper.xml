@@ -52,6 +52,11 @@
 		select * from memberFile where id=#{id}
 	</select>
 
+	<select id="getMemberFile" parameterType="MemberDTO" resultType="MemberFileDTO"> <!-- 원하는건 file name이니까 -->
+		select fileName from memberFile where id=#{id}
+	</select>
+
+
 
 </mapper>   
 

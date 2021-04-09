@@ -23,7 +23,7 @@
 		<result property="contents" column="contents"/>
 		<result property="regDate" column="regDate"/>
 		<result property="hit" column="hit"/>
-		<collection property="noticeFiles" javaType="java.util.List" ofType="BoardFileDTO">
+		<collection property="boardFiles" javaType="java.util.List" ofType="BoardFileDTO">
 			<id property="fileNum" column="fileNum"/>
 			<result property="fileName" column="fileName"/>
 			<result property="origineName" column="origineName"/>
@@ -88,8 +88,16 @@
 		update notice set title=#{title}, contents=#{contents} where num=#{num}
 	</update>
 
-		<update id="setHitUpdate" parameterType="BoardDTO">
+	<update id="setHitUpdate" parameterType="BoardDTO">
 		update notice set hit=hit+1 where num=#{num}
 	</update>
+	
+	
+	<select id="getNoticeFile" parameterType="BoardDTO" resultType="BoardFileDTO">
+		select fileName from noticeFile where num=#{num}
+	</select>
+	
+	
+	
 	
 </mapper>

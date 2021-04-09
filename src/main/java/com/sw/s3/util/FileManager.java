@@ -13,6 +13,22 @@ import org.springframework.web.multipart.MultipartFile;
 @Component
 public class FileManager {
 	
+	public boolean delete(String name, String fileName, HttpSession session) throws Exception { 	//session - 경로 받아와야 하니까, 실제 파일이름 fileName
+		//1. 경로 설정
+		String path = session.getServletContext().getRealPath("resources/upload/"+name);
+		File file = new File(path, fileName);
+		boolean check = false;
+		
+		if(file.exists()) {				//있으나없으나 상관없음
+			check = file.delete();
+		}
+		
+		return check;
+	}
+	
+	
+	
+	
 	public String save(String name, MultipartFile multipartFile, HttpSession session) throws Exception {
 		//1. 경로 설정
 		String path = session.getServletContext().getRealPath("resources/upload/" + name);
@@ -46,7 +62,6 @@ public class FileManager {
 		
 		return fileName;
 	}
-	
 	
 	
 //밑에는 안쓸꺼지만 ------------------------------------------------------------------------------------	

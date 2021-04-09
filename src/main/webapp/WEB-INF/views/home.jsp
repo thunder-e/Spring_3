@@ -54,25 +54,15 @@
  
  
 <script type="text/javascript">
-
 	$("#btn2").click(function(){
-		$("#result").prepend('<li>GO</li>');
-	});
-	
+		$.get("./test?num=3", function(data){ 		//결과물을 data로 받아 -> test.jsp 전체
+			console.log(data);
+			$("#d2").html(data);
+		});	
+	})
 	
 
-	for(let i=1;i<13;i++){
-		$("#mon").append("<option>"+i+"</option>");
-	}
-	
-	$("#d1").click(function(){
-		console.log("parent");
-	})
-	
-	
-	$("#d2").click(function(){
-		console.log("child");
-	})
+
 </script>
  
 </body>
