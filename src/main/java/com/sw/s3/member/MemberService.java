@@ -21,11 +21,16 @@ public class MemberService {
 	@Autowired
 	private FileManager fileManager;
 	
+	public MemberDTO memberIdCheck(MemberDTO memberDTO)throws Exception{
+		return memberDAO.memberIdCheck(memberDTO);
+	}
+	
+	
 	public int memberUpdate(MemberDTO memberDTO) throws Exception {
 		return memberDAO.memberUpdate(memberDTO);
 	}
 	
-	
+		
 	public int memberDelete(MemberDTO memberDTO, HttpSession session) throws Exception {
 		MemberFileDTO memberFileDTO = memberDAO.getMemberFile(memberDTO);
 		boolean check = fileManager.delete("member", memberFileDTO.getFileName(), session);

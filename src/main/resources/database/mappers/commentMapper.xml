@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.sw.s3.board.comments.CommentsDAO">
+	<!-- id getList -->
+	<select id="getList" parameterType="CommentsDTO" resultType="CommentsDTO">
+		select * from comments where num=#{num} order by commentNum desc
+	</select>
+	
+	<insert id="setInsert" parameterType="CommentsDTO">
+		insert into comments values (notice_seq.nextval, #{num}, #{writer}, #{contents}, sysdate)
+	</insert>
+
+
+</mapper>

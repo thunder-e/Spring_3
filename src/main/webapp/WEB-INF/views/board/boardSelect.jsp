@@ -39,7 +39,28 @@
 			</c:forEach>
 		</div>
 
+
+		<!-- 댓글 리스트 -->
+		<div id="comments" title="${dto.num}"></div>
+
+
+		<div>
+			<div class="form-group">
+				<label for="usr">Name:</label> <input type="text"
+					class="form-control" id="writer">
+			</div>
+
+			<div class="form-group">
+				<label for="comment">Comment:</label>
+				<textarea class="form-control" rows="5" id="contents"></textarea>
+			</div>
+			
+			<button type="button" class="btn btn-success" id="write">Write</button>
+		</div>
+
 	</div>
+
+
 
 	<c:catch>
 		<%-- <c:if test="${member.id eq 'admin'}"> --%>
@@ -51,6 +72,7 @@
 				<a href="./${board}Reply?num=${dto.num}" class="btn btn-info">Reply</a>
 			</c:if>
 
+
 			<form action="./${board}Delete" id="frm" method="get">
 				<input type="hidden" name="num" value="${dto.num}">
 			</form>
@@ -59,7 +81,7 @@
 		</div>
 		<%-- </c:if> --%>
 	</c:catch>
-
+	<script type="text/javascript" src="../resources/jquery/comments.js"></script>
 	<script type="text/javascript">
 		const del = document.getElementById("del");
 		const frm = document.getElementById("frm");
@@ -69,7 +91,7 @@
 
 			if (result) {
 				//frm.method="post";
-				frm.setAttribute("method","post");
+				frm.setAttribute("method", "post");
 				frm.submit();
 				//location.href="./${board}Delete?num=${dto.num}";
 			}
