@@ -9,7 +9,7 @@
 <c:import url="../template/bootStrap.jsp"></c:import>
 <style type="text/css">
 #sample {
-	/*display: none;*/
+	display: none;
 }
 </style>
 </head>
@@ -36,8 +36,8 @@
 					name="contents"></textarea>
 			</div>
 			<input type="button" id="add" value="ADD" class="btn btn-danger">
-			<input type="button" id="del" value="DELETE" class="btn btn-info">
-			<div id="files"></div>
+
+			<div id="files" title="0"></div>
 
 
 			<input type="button" id="btn" value="WRITE" class="btn btn-primary">

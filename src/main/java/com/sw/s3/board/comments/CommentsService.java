@@ -11,7 +11,7 @@ public class CommentsService {
 	@Autowired
 	private CommentsDAO commentsDAO;
 	
-	public void setDelete()
+//	public void setDelete()
 	
 	public List<CommentsDTO> getList(CommentsDTO commentsDTO) throws Exception{
 		return commentsDAO.getList(commentsDTO);

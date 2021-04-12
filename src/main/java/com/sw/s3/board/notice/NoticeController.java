@@ -17,6 +17,7 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 import com.sw.s3.board.BoardDTO;
+import com.sw.s3.board.BoardFileDTO;
 import com.sw.s3.util.Pager;
 import com.sw.s3.util.Pager_backUp;
 
@@ -26,6 +27,19 @@ public class NoticeController {
 	
 	@Autowired
 	private NoticeService noticeService;
+	
+	@GetMapping("fileDelete")
+	public ModelAndView setFileDelete(BoardFileDTO boardFileDTO)throws Exception{
+		ModelAndView mv = new ModelAndView();
+		int result = noticeService.setFileDelete(boardFileDTO);
+		mv.addObject("result", result);
+		mv.addObject("msg", "정말 삭제하시겠습니까?");
+		mv.setViewName("common/commonResult");
+		//mv.setViewName("common/ajaxResult");
+		return mv;
+		
+	}
+	
 	
 	@RequestMapping("noticeList")
 	public ModelAndView getList(Pager pager) throws Exception { 		//b. 파라미터가 오지 않을 경우  @RequestParam(defaultValue="기본값") 데이터타입 변수명 @RequestParam(defaultValue = "1") long curPage
@@ -88,7 +102,7 @@ public class NoticeController {
 	@GetMapping("noticeUpdate")
 	public ModelAndView setUpdate(BoardDTO boardDTO) throws Exception {
 		ModelAndView mv = new ModelAndView();
-		boardDTO = noticeService.getSelect(boardDTO);
+		boardDTO = noticeService.getSelect(boardDTO);	//번호가 있겠지
 		
 		mv.addObject("dto", boardDTO);
 		mv.addObject("board", "notice");
@@ -97,8 +111,8 @@ public class NoticeController {
 	}
 	
 	@PostMapping("noticeUpdate")
-	public ModelAndView setUpdate(BoardDTO boardDTO,ModelAndView mv) throws Exception {
-		int result = noticeService.setUpdate(boardDTO);
+	public ModelAndView setUpdate(BoardDTO boardDTO,ModelAndView mv, MultipartFile [] files) throws Exception {
+		int result = noticeService.setUpdate(boardDTO,files);
 		
 		//성공하면 리스트로 이동
 		if(result>0) {

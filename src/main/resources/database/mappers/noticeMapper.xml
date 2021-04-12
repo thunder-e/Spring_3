@@ -5,6 +5,15 @@
 
 <mapper namespace="com.sw.s3.board.notice.NoticeDAO">
 
+	<select id="getFileSelect" parameterType="BoardFileDTO" resultType="BoardFileDTO">
+		select * from noticeFiles where fileNum=#{fileNum}
+	</select>
+
+	<delete id="setFileDelete" parameterType="BoardFileDTO">
+		delete noticeFiles where fileNum=#{fileNum}
+	</delete>
+
+
 	<insert id="setFileInsert" parameterType="BoardFileDTO">
 		insert into noticeFiles values(file_seq.nextval, #{num}, #{fileName}, #{origineName})
 	</insert>
@@ -23,7 +32,7 @@
 		<result property="contents" column="contents"/>
 		<result property="regDate" column="regDate"/>
 		<result property="hit" column="hit"/>
-		<collection property="boardFiles" javaType="java.util.List" ofType="BoardFileDTO">
+		<collection property="boardFiles" javaType="java.util.List" ofType="BoardFileDTO"> 
 			<id property="fileNum" column="fileNum"/>
 			<result property="fileName" column="fileName"/>
 			<result property="origineName" column="origineName"/>

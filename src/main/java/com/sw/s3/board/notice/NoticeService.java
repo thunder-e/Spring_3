@@ -26,6 +26,21 @@ public class NoticeService implements BoardService {
 	
 	@Autowired
 	private HttpSession session;
+	
+	
+	public int setFileDelete(BoardFileDTO boardFileDTO)throws Exception{
+		//fileName을 print
+		//1. 조회
+		boardFileDTO = noticeDAO.getFileSelect(boardFileDTO);
+		//2. table 삭제
+		int result = noticeDAO.setFileDelete(boardFileDTO);
+		//3. HDD 삭제
+		if(result > 0) {
+		fileManager.delete("notice", boardFileDTO.getFileName(), session);
+		}
+		return result;
+	}
+	
 
 	
 	public List<BoardDTO> getList(Pager pager) throws Exception {
@@ -72,7 +87,19 @@ public class NoticeService implements BoardService {
 	}
 
 	@Override
-	public int setUpdate(BoardDTO boardDTO) throws Exception {
+	public int setUpdate(BoardDTO boardDTO, MultipartFile [] files) throws Exception {
+		for(MultipartFile multipartFile:files) {
+			BoardFileDTO boardFileDTO = new BoardFileDTO();
+			//1. File들을 HDD에 저장
+			String fileName = fileManager.save("notice", multipartFile, session);
+			boardFileDTO.setFileName(fileName);
+			boardFileDTO.setOrigineName(multipartFile.getOriginalFilename());
+			boardFileDTO.setNum(boardDTO.getNum());
+			//2. DB에 Insert
+			noticeDAO.setFileInsert(boardFileDTO);
+		}
+	
+		//3. 글수정	
 		return noticeDAO.setUpdate(boardDTO);
 	}
 
