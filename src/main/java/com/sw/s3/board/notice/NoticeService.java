@@ -28,6 +28,18 @@ public class NoticeService implements BoardService {
 	private HttpSession session;
 	
 	
+	public boolean setSummerFileDelete(String fileName) throws Exception {
+		boolean result = fileManager.delete("notice", fileName, session);
+		return result;
+	}
+	
+	public String setSummerFileUpload(MultipartFile file) throws Exception {
+		
+		String fileName = fileManager.save("notice", file, session);
+		return fileName;
+	}
+	
+	
 	public int setFileDelete(BoardFileDTO boardFileDTO)throws Exception{
 		//fileName을 print
 		//1. 조회
